@@ -15,19 +15,27 @@ const ObjectId = mongoose.Types.ObjectId
 let possibilities
 
 const getForManager = (req, res) => {
-  let query = Gestionnaire.findOne({_id: ObjectId(req.params.managerId) });
+  try {
+    Gestionnaire.findOne({_id: ObjectId(req.params.managerId) })
+      .exec((err, gestionnaireResult) => {
+        if (err) {
+          return res.status(500).json({message: error})
+        }
 
-  query.exec((err, gestionnaireResult) => {
-    if (err) {
-      res.send(err)
-    }
+        if (!gestionnaireResult) {
+          return res.status(404).json({message: 'There is no manager for this id'})
+        }
 
-    const gestionnaire = gestionnaireResult.toObject()
-    possibilities = []
-    aggregateNumbers(gestionnaire.numeros)
+        const gestionnaire = gestionnaireResult.toObject()
+        possibilities = []
+        aggregateNumbers(gestionnaire.numeros)
 
-    res.json(possibilities)
-  });
+        res.json(possibilities)
+      })
+    ;
+  } catch (error) {
+    res.status(400).json({message: 'You provided a bad id'})
+  }
 }
 
 /**

@@ -17,6 +17,7 @@ describe('login', () => {
           res.should.have.status(200)
           res.body.should.be.a('object')
           res.body.token.should.be.a('string')
+
           done()
       })
     })
@@ -29,6 +30,7 @@ describe('login', () => {
           res.should.have.status(401)
           res.body.should.be.a('object')
           res.body.message.should.be.equal('Bad login or password')
+
           done()
       })
     })

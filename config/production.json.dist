@@ -1,0 +1,19 @@
+{
+  "db": {
+    "host": "mongodb://localhost:27017/foncia-manager",
+    "options": { 
+      "useNewUrlParser": true
+    }
+  },
+  "api": {
+    "port": "3000"
+  },
+  "jwt": {
+    "secret": "s3eEcRr3e7t"
+  },
+  "login": {
+    "user": "john",
+    "password": "myfonciapassword",
+    "testToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiam9obiIsImlhdCI6MTU1MjY0MDMzOX0.dmITagl6R4WtyKj35ITXAXAuMJOiFqqq0gbmbwkKK9M"
+  }
+}

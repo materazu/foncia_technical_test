@@ -64,7 +64,7 @@ passport.use(new JwtStrategy(opts, (jwt_payload, done) => {
   const user = { ...jwt_payload }
 
   if (user.user !== config.login.user) {
-    return done(false, 'Not Auhorized!')  
+    return done(false, 'Token expired or invalid')  
   }
 
   return done(null, user)
