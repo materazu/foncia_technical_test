@@ -53,7 +53,7 @@ passport.use(new JwtStrategy(opts, (jwt_payload, done) => {
   return done(null, {user: {...jwt_payload}})
 }))
 
-const authRequired = passport.authenticate('jwt', { session: false });
+const authRequired = passport.authenticate('jwt', { session: false })
 
 /**
  * Routes
