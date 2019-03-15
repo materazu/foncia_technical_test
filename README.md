@@ -10,6 +10,7 @@
 - mocha
 - morgan
 - mongoose
+- mongoose-paginate-v2
 - nodemon
 - passport-jwt
 

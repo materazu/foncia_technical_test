@@ -12,14 +12,17 @@ const JwtStrategy = require('passport-jwt').Strategy
 const mongoose = require('mongoose')
 const morgan = require('morgan')
 const passport = require('passport')
+const router = express.Router()
+const swaggerUi = require('swagger-ui-express')
+const swaggerDocument = require('./swagger.json')
 
 /**
  * Route features
  */
-let login = require('./features/login')
-let profile = require('./features/profile')
+let clients = require('./features/clients')
 let codes = require('./features/codes')
-
+let profile = require('./features/profile')
+let login = require('./features/login')
 
 /**
  * Config constants
@@ -44,6 +47,13 @@ const db = mongoose.connection
 db.on('error', console.error.bind(console, 'connection error:'))
 
 /**
+ * Register models
+ */
+require('./schema/client')
+require('./schema/gestionnaire')
+require('./schema/lot')
+
+/**
  * Bootstraping Passport
  */
 const opts = {
@@ -51,7 +61,13 @@ const opts = {
   secretOrKey: jwtSecret
 }
 passport.use(new JwtStrategy(opts, (jwt_payload, done) => {
-  return done(null, {user: { ...jwt_payload }})
+  const user = { ...jwt_payload }
+
+  if (user.user !== config.login.user) {
+    return done(false, 'Not Auhorized!')  
+  }
+
+  return done(null, user)
 }))
 
 const authRequired = passport.authenticate('jwt', { session: false })
@@ -59,18 +75,24 @@ const authRequired = passport.authenticate('jwt', { session: false })
 /**
  * Routes
  */
-app.route('/login')
+router.route('/login')
   .post(login.post)
 
-app.route('/profile')
+router.route('/profile')
   .get(authRequired, profile.get)
 
-app.route('/codes/:managerId')
+router.route('/codes/:managerId')
   .get(authRequired, codes.getForManager)
+
+router.route('/clients')
+  .get(authRequired, clients.get)
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/api/v1', router);
 
 /**
  * Run the api
  */
-app.listen(apiPort, function () {
+module.exports = app.listen(apiPort, function () {
   console.log('Example app listening on port 3000!')
 })

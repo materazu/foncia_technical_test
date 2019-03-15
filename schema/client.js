@@ -1,4 +1,6 @@
 const mongoose = require('mongoose')
+const mongoosePaginate = require('mongoose-paginate-v2')
+
 const Schema = mongoose.Schema
 
 const clientSchema = new Schema({
@@ -26,5 +28,7 @@ clientSchema.pre('save', next => {
 
   next()
 })
+
+clientSchema.plugin(mongoosePaginate)
 
 module.exports = mongoose.model('Client', clientSchema)

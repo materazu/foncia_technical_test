@@ -9,6 +9,7 @@ const jwt = require('jsonwebtoken')
  */
 const loginUser = config.login.user
 const loginPassword = config.login.password
+const jwtSecret = config.jwt.secret
 
 const post = (req, res) => {
   const user = req.body.user
