@@ -2,7 +2,7 @@
 const chai = require('chai')
 const chaiHttp = require('chai-http')
 const server = require('../index')
-const should = chai.should();
+const should = chai.should()
 const config = require('config')
 
 chai.use(chaiHttp);
@@ -14,7 +14,7 @@ const codes = [
   '4.5.2.6',
   '4.5.4.2.8',
   '4.5.4.5.0.9'
-];
+]
 
 describe('codes', () => {
   describe('GET /api/v1/codes/:managerId', () => {

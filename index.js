@@ -21,8 +21,8 @@ const swaggerDocument = require('./swagger.json')
  */
 let clients = require('./features/clients')
 let codes = require('./features/codes')
-let profile = require('./features/profile')
 let login = require('./features/login')
+let profile = require('./features/profile')
 
 /**
  * Config constants
@@ -73,7 +73,7 @@ passport.use(new JwtStrategy(opts, (jwt_payload, done) => {
 const authRequired = passport.authenticate('jwt', { session: false })
 
 /**
- * Routes
+ * Declaration for routes
  */
 router.route('/login')
   .post(login.post)
@@ -87,12 +87,19 @@ router.route('/codes/:managerId')
 router.route('/clients')
   .get(authRequired, clients.get)
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-app.use('/api/v1', router);
+/**
+ * Start router on scope /v1/
+ */
+app.use('/api/v1', router)
+
+/**
+ * Attach api-docs
+ */
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 /**
  * Run the api
  */
 module.exports = app.listen(apiPort, function () {
-  console.log('Example app listening on port 3000!')
+  console.log(`Foncia manager api listening on port ${apiPort}!`)
 })

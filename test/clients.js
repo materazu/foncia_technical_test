@@ -16,7 +16,7 @@ describe('clients', () => {
         .end((err, res) => {
           res.should.have.status(200)
           res.body.should.be.a('object')
-          res.body.should.have.property('docs');
+          res.body.should.have.property('docs')
 
           res.body.docs.length.should.equal(10)
 
@@ -29,24 +29,24 @@ describe('clients', () => {
         .get('/api/v1/clients')
         .set({ 'Authorization': `Bearer ${config.login.testToken}` })
         .end((err, res) => {
-          res.body.should.have.property('totalDocs');
-          res.body.should.have.property('limit');
-          res.body.should.have.property('hasPrevPage');
-          res.body.should.have.property('hasNextPage');
-          res.body.should.have.property('page');
-          res.body.should.have.property('totalPages');
-          res.body.should.have.property('pagingCounter');
-          res.body.should.have.property('prevPage');
-          res.body.should.have.property('nextPage');
+          res.body.should.have.property('totalDocs')
+          res.body.should.have.property('limit')
+          res.body.should.have.property('hasPrevPage')
+          res.body.should.have.property('hasNextPage')
+          res.body.should.have.property('page')
+          res.body.should.have.property('totalPages')
+          res.body.should.have.property('pagingCounter')
+          res.body.should.have.property('prevPage')
+          res.body.should.have.property('nextPage')
 
-          res.body.totalDocs.should.equal(122);
-          res.body.limit.should.equal(10);
-          res.body.hasPrevPage.should.equal(false);
-          res.body.hasNextPage.should.equal(true);
-          res.body.page.should.equal(1);
-          res.body.totalPages.should.equal(13);
-          res.body.pagingCounter.should.equal(1);
-          res.body.nextPage.should.equal(2);
+          res.body.totalDocs.should.equal(122)
+          res.body.limit.should.equal(10)
+          res.body.hasPrevPage.should.equal(false)
+          res.body.hasNextPage.should.equal(true)
+          res.body.page.should.equal(1)
+          res.body.totalPages.should.equal(13)
+          res.body.pagingCounter.should.equal(1)
+          res.body.nextPage.should.equal(2)
 
           done()
       })
