@@ -18,7 +18,7 @@ app.use(morgan('combined'))
 /**
  * Bootstraping Mongoose
  */
-mongoose.connect(config.db.host, confib.db.options)
+mongoose.connect(config.db.host, config.db.options)
 const db = mongoose.connection
 db.on('error', console.error.bind(console, 'connection error:'))
 
