@@ -8,21 +8,25 @@ const bodyParser = require('body-parser')
 const config = require('config')
 const express = require('express')
 const ExtractJwt = require('passport-jwt').ExtractJwt
-const jwt = require('jsonwebtoken')
 const JwtStrategy = require('passport-jwt').Strategy
 const mongoose = require('mongoose')
 const morgan = require('morgan')
 const passport = require('passport')
 
 /**
- * Configs constants
+ * Route features
+ */
+let login = require('./features/login')
+let profile = require('./features/profile')
+
+
+/**
+ * Config constants
  */
 const apiPort = config.api.port
 const dbHost = config.db.host
 const dbOptions = config.db.options
 const jwtSecret = config.jwt.secret
-const loginUser = config.login.user
-const loginPassword = config.login.password
 
 /**
  * Bootstraping Express
@@ -49,28 +53,16 @@ passport.use(new JwtStrategy(opts, (jwt_payload, done) => {
   return done(null, {user: {...jwt_payload}})
 }))
 
+const authRequired = passport.authenticate('jwt', { session: false });
+
 /**
  * Routes
  */
-app.post('/login', (req, res) => {
-  const user = req.body.user
-  const password = req.body.password
-  const loginMatch = user === loginUser
-  const passwordMatch = password === loginPassword
+app.route('/login')
+  .post(login.post)
 
-  if (!loginMatch || !passwordMatch) {
-    return res.status(401).send({message: 'Bad login or password'});
-  }
-
-  const token = jwt.sign({user: user}, jwtSecret)
-  res.send({token: token})
-})
-
-app.post('/profile', passport.authenticate('jwt', { session: false }),
-  (req, res) => {
-    res.send(req.user)
-  }
-)
+app.route('/profile')
+  .get(authRequired, profile.get)
 
 /**
  * Run the api
