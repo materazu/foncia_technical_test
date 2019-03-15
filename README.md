@@ -19,7 +19,8 @@
 
 # Start
 
-To start the api, simply do a `npm start`. We used Nodemon to refresh the work all time you edit files.    
+To start the api, simply do a `npm install` and `npm start`.    
+We used Nodemon to refresh the work all time you edit files.    
 You can config your environment on the `config/default.json` file.
 
 # Environment config for deploy
