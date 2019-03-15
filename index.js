@@ -50,7 +50,7 @@ const opts = {
   secretOrKey: jwtSecret
 }
 passport.use(new JwtStrategy(opts, (jwt_payload, done) => {
-  return done(null, {user: {...jwt_payload}})
+  return done(null, {user: { ...jwt_payload }})
 }))
 
 const authRequired = passport.authenticate('jwt', { session: false })

@@ -2,13 +2,16 @@
 
 # Dependencies
 
-- Express
-- config
-- nodemon
-- mocha
+- body-parser
 - chai
+- config
+- Express
+- jwtoken
+- mocha
 - morgan
 - mongoose
+- nodemon
+- passport-jwt
 
 # Start
 

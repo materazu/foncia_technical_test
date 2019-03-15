@@ -17,10 +17,12 @@ const post = (req, res) => {
   const passwordMatch = password === loginPassword
 
   if (!loginMatch || !passwordMatch) {
-    return res.status(401).send({message: 'Bad login or password'})
+    return res
+      .status(401)
+      .send({message: 'Bad login or password'})
   }
 
-  const token = jwt.sign({user: user}, jwtSecret)
+  const token = jwt.sign({ user: user }, jwtSecret)
   res.send({token: token})
 }
 
