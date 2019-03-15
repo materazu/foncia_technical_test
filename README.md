@@ -2,20 +2,20 @@
 
 # Dependencies
 
-- [body-parser](https://www.npmjs.com/package/body-parser)
-- [chai](https://www.npmjs.com/package/chai)
-- [chai-http](https://www.npmjs.com/package/chai-http)
-- [config](https://www.npmjs.com/package/config)
-- [express](https://www.npmjs.com/package/express)
-- [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
-- [mocha](https://www.npmjs.com/package/mocha)
-- [mongoose](https://www.npmjs.com/package/mongoose)
-- [mongoose-paginate-v2](https://www.npmjs.com/package/mongoose-paginate-v2)
-- [morgan](https://www.npmjs.com/package/morgan)
-- [nodemon](https://www.npmjs.com/package/nodemon)
-- [passport](https://www.npmjs.com/package/passport)
-- [passport-jwt](https://www.npmjs.com/package/passport-jwt)
-- [swagger-ui-express](https://www.npmjs.com/package/swagger-ui-express)
+- [body-parser](https://www.npmjs.com/package/body-parser) to use json on body and responses
+- [chai](https://www.npmjs.com/package/chai) for testing
+- [chai-http](https://www.npmjs.com/package/chai-http) for http testing
+- [config](https://www.npmjs.com/package/config) to provide config file for api
+- [express](https://www.npmjs.com/package/express) because express ;)
+- [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) for generating json web token
+- [mocha](https://www.npmjs.com/package/mocha) for testing stack
+- [mongoose](https://www.npmjs.com/package/mongoose) to abstract mongo manipulations
+- [mongoose-paginate-v2](https://www.npmjs.com/package/mongoose-paginate-v2) to add pagination on all requests
+- [morgan](https://www.npmjs.com/package/morgan) to have, because log is life, and we love our Devops
+- [nodemon](https://www.npmjs.com/package/nodemon) to increase the productivity
+- [passport](https://www.npmjs.com/package/passport) for authentification
+- [passport-jwt](https://www.npmjs.com/package/passport-jwt) for authentification WITH jwt
+- [swagger-ui-express](https://www.npmjs.com/package/swagger-ui-express) to provide documentation of the api routes
 
 # Start
 
