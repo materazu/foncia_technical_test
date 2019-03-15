@@ -18,6 +18,7 @@ const passport = require('passport')
  */
 let login = require('./features/login')
 let profile = require('./features/profile')
+let codes = require('./features/codes')
 
 
 /**
@@ -63,6 +64,9 @@ app.route('/login')
 
 app.route('/profile')
   .get(authRequired, profile.get)
+
+app.route('/codes/:managerId')
+  .get(authRequired, codes.getForManager)
 
 /**
  * Run the api

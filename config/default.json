@@ -1,6 +1,6 @@
 {
   "db": {
-    "host": "mongodb://localhost:27017/fonciaManager",
+    "host": "mongodb://localhost:27017/foncia-manager",
     "options": { 
       "useNewUrlParser": true
     }
