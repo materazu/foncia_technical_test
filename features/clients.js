@@ -6,8 +6,8 @@ const mongoose = require('mongoose')
 /**
  * Models
  */
-const Client = require('../schema/client');
-const Lot = require('../schema/lot');
+const Client = require('../schema/client')
+const Lot = require('../schema/lot')
 
 
 /**

@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 /**
  * Model
  */
-const Gestionnaire = require('../schema/gestionnaire');
+const Gestionnaire = require('../schema/gestionnaire')
 
 /**
  * Declarations
