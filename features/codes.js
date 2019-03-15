@@ -30,6 +30,17 @@ const getForManager = (req, res) => {
   });
 }
 
+/**
+ * Simple aggregator for numbers
+ * keep first number, check left and right value
+ * recursively aggregate through the next left or right value
+ * until left and right are empty
+ * 
+ * Returns array of chained numbers formatted to string like x.x.x
+ * 
+ * @param {Number} number number to use
+ * @param {Array} chained parent chained
+ */
 const aggregateNumbers = (number, chained) => {
   const chain = chained ? [...chained] : []
 
