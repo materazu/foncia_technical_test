@@ -1,21 +1,8 @@
 {
   "db": {
-    "host": "localhost",
-    "port": 5984,
-    "dbName": "fonciaManager",
+    "host": "mongodb://localhost:27017/fonciaManager",
     "options": { 
-      "server": { 
-        "socketOptions": { 
-          "keepAlive": 1, 
-          "connectTimeoutMS": 30000 
-          }
-        }, 
-      "replset": { 
-        "socketOptions": { 
-          "keepAlive": 1, 
-          "connectTimeoutMS" : 30000 
-          }
-        } 
+      "useNewUrlParser": true
     }
   },
   "api": {
