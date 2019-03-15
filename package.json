@@ -1,0 +1,43 @@
+{
+  "name": "foncia_technical_test",
+  "version": "0.0.1",
+  "description": "Foncia manager api",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon",
+    "test": "mocha --timeout 10000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/materazu/foncia_technical_test.git"
+  },
+  "keywords": [
+    "api",
+    "rest",
+    "jwt",
+    "mocha",
+    "login",
+    "listing",
+    "paginate"
+  ],
+  "author": "Julien Moulin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/materazu/foncia_technical_test/issues"
+  },
+  "homepage": "https://github.com/materazu/foncia_technical_test#readme",
+  "nodemonConfig": {
+    "ignore": [
+      "test/*",
+      "docs/*"
+    ],
+    "delay": "2500"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  },
+  "dependencies": {
+    "config": "^3.0.1",
+    "express": "^4.16.4"
+  }
+}
