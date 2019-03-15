@@ -4,13 +4,23 @@
 /**
  * Dependencies
  */
-const config = require('config');
+const config = require('config')
 const express = require('express')
+const mongoose = require('mongoose')
+const morgan = require('morgan')
 
 /**
  * Bootstraping Express
  */
 const app = express()
+app.use(morgan('combined'))
+
+/**
+ * Bootstraping Mongoose
+ */
+mongoose.connect(config.db.host, confib.db.options)
+const db = mongoose.connection
+db.on('error', console.error.bind(console, 'connection error:'))
 
 /**
  * Configs constants

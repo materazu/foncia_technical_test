@@ -7,6 +7,8 @@
 - nodemon
 - mocha
 - chai
+- morgan
+- mongoose
 
 # Start
 

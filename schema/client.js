@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
 const clientSchema = new Schema({
   fullname:  String,
@@ -11,6 +11,20 @@ const clientSchema = new Schema({
   telMobile2: String,
   fax: String,
   sexe: String,
-});
+  createdAt: { type: Date, default: Date.now },    
+  updatedAt: { type: Date, default: Date.now },
+})
 
-module.exports = mongoose.model('Client', clientSchema);
+clientSchema.pre('save', next => {
+  const now = new Date()
+
+  if (!this.createdAt) {
+    this.createdAt = now
+  } else {
+    this.updatedAt = now
+  }
+
+  next()
+})
+
+module.exports = mongoose.model('Client', clientSchema)
